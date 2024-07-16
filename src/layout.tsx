@@ -78,9 +78,9 @@ const LayoutPage = () => {
         <Box
           className={`card_box2 ${!vizacard ? "hover_box" : ""}`}
           sx={{
-            cursor: "pointer",
-            padding: "10px 20px",
             borderRadius: "10px",
+            padding: "10px 20px",
+            cursor: "pointer",
             backgroundColor: !vizacard ? "#FFF" : "#834cff1a",
             border: !vizacard ? "1px solid #834cff" : "none",
             transition: "background-color 0.3s, border 0.3s",
