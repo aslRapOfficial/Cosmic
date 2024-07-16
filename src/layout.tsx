@@ -25,14 +25,14 @@ const LayoutPage = () => {
     expiryDate: "",
   });
 
-  const Mycard = () => {
-    mycards(true);
+  const Mycard = (isVizaCard: boolean) => {
+    mycards(isVizaCard);
   };
 
-  const Addcards = () => {
+  const addCards = () => {
     setCards([...cards, newCard]);
     setNewCard({ cardNumber: "", cardHolder: "", expiryDate: "" });
-    mycards(true);
+    mycards(false);
   };
 
   const inputvaluesi = (
@@ -52,16 +52,15 @@ const LayoutPage = () => {
         backgroundColor: "#F7F9FC",
         padding: "20px",
         width: "100%",
-        maxWidth: "100%",
         position: "relative",
       }}
     >
       <img
-        className="d-none d-lg-block"
+        className="hidden lg:block"
         style={{
           position: "absolute",
           top: "20px",
-          left: "370px",
+          left: "390px",
         }}
         src={frem}
         alt=""
@@ -71,30 +70,37 @@ const LayoutPage = () => {
         sx={{
           display: "flex",
           gap: 2,
-          width: "53%",
+          width: { xs: "89%", md: "69%", lg: "51%" },
           marginTop: "50px",
+          justifyContent: "center",
         }}
       >
         <Box
-          className="card_box"
+          className={`card_box2 ${!vizacard ? "hover_box" : ""}`}
           sx={{
             cursor: "pointer",
             padding: "10px 20px",
             borderRadius: "10px",
+            backgroundColor: !vizacard ? "#FFF" : "#834cff1a",
+            border: !vizacard ? "1px solid #834cff" : "none",
+            transition: "background-color 0.3s, border 0.3s",
           }}
-          onClick={() => mycards(false)}
+          onClick={() => Mycard(false)}
         >
           <CiCreditCard1 />
           <Typography>New Credit Card</Typography>
         </Box>
         <Box
-          className="card_box2"
+          className={`card_box2 ${vizacard ? "hover_box" : ""}`}
           sx={{
             cursor: "pointer",
             padding: "10px 20px",
             borderRadius: "10px",
+            backgroundColor: vizacard ? "#FFF" : "#834cff1a",
+            border: vizacard ? "1px solid #834cff" : "none",
+            transition: "background-color 0.3s, border 0.3s",
           }}
-          onClick={Mycard}
+          onClick={() => Mycard(true)}
         >
           <CiCreditCard1 />
           <Typography>My Cards</Typography>
@@ -107,13 +113,17 @@ const LayoutPage = () => {
             gap: "20px",
             flexWrap: "wrap",
             maxWidth: "1000px",
+            justifyContent: "center",
+            marginTop: "20px",
+            width: { xs: "90%", md: "70%", lg: "53%" },
           }}
         >
           {cards.map((card, index) => (
             <Box
               key={index}
               sx={{
-                width: "300px",
+                width: "100%",
+                maxWidth: "300px",
                 height: "200px",
                 borderRadius: "10px",
                 backgroundColor: "#FFFFFF",
@@ -194,10 +204,12 @@ const LayoutPage = () => {
           ))}
         </Box>
       ) : (
-        <Box>
+        <Box
+          sx={{ width: { xs: "90%", md: "70%", lg: "50%" }, marginTop: "50px" }}
+        >
           <div className="mt-5">
-            <h1
-              style={{
+            <Typography
+              sx={{
                 fontSize: "30px",
                 lineHeight: "32px",
                 marginBottom: "10px",
@@ -205,10 +217,10 @@ const LayoutPage = () => {
               }}
             >
               Add New Card
-            </h1>
-            <h5 className="text-slate-500">
+            </Typography>
+            <Typography className="text-slate-500">
               Do more with unlimited blocks, files, automations & integrations.
-            </h5>
+            </Typography>
           </div>
           <Box style={{ marginTop: "60px" }}>
             <label className="text-slate-500" htmlFor="cardHolder">
@@ -255,12 +267,12 @@ const LayoutPage = () => {
           </Box>
           <Box className="mt-5 flex gap-5 items-center">
             <Button className="button_hover1">Cancel</Button>
-            <Button className="button_hover" onClick={Addcards}>
+            <Button className="button_hover" onClick={addCards}>
               Add
             </Button>
           </Box>
           <Typography
-            style={{ fontSize: "13px", marginTop: "20px" }}
+            sx={{ fontSize: "13px", marginTop: "20px" }}
             className="text-slate-500"
           >
             By providing your card information, you allow us to charge your card

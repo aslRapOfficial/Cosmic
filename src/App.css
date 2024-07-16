@@ -7,17 +7,9 @@
   box-sizing: border-box;
 }
 
-.card_box {
-  background: #834cff1a;
-  border: 1px solid #834cff;
-  padding: 17px;
-  cursor: pointer;
-  width: 50% !important;
-}
 .hover_box:hover {
   background: #834cff1a;
   border: 1px solid #834cff;
-  padding: 17px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
@@ -25,7 +17,6 @@
 .card_box2 {
   background: #ffffff;
   border: 1px solid #e1e6ef;
-  padding: 17px;
   cursor: pointer;
   width: 50% !important;
 }
