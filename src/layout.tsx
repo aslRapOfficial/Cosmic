@@ -1,8 +1,8 @@
 import { Box, Button, Typography, TextField } from "@mui/material";
 import { useState, ChangeEvent } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
-import frem from "./pages/layouts/frem.png";
-import chip from "./pages/layouts/chip.png";
+import frem from "./images/layouts/frem.png";
+import chip from "./images/layouts/chip.png";
 
 const LayoutPage = () => {
   const [vizacard, mycards] = useState(false);
