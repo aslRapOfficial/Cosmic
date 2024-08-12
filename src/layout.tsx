@@ -2,19 +2,20 @@ import { Box, Button, Typography, TextField } from "@mui/material";
 import { useState, ChangeEvent } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import frem from "./images/layouts/frem.png";
-import chip from "./images/layouts/chip.png";
+import frem2 from "./images/layouts/Group.png";
+import frem3 from "./images/layouts/mastercard_symbol.svg (1).png";
 
 const LayoutPage = () => {
   const [vizacard, mycards] = useState(false);
   const [cards, setCards] = useState([
     {
       cardNumber: "**** **** **** 2404",
-      cardHolder: "Sardor",
+      cardHolder: "Jamshid",
       expiryDate: "02/30",
     },
     {
       cardNumber: "**** **** **** 2345",
-      cardHolder: "Islom",
+      cardHolder: "Mirjalol",
       expiryDate: "08/28",
     },
   ]);
@@ -35,9 +36,7 @@ const LayoutPage = () => {
     mycards(false);
   };
 
-  const inputvaluesi = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
+  const inputvaluesi = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setNewCard({ ...newCard, [name]: value });
   };
@@ -76,7 +75,7 @@ const LayoutPage = () => {
         }}
       >
         <Box
-          className={`card_box2 ${!vizacard ? "hover_box" : ""}`}
+          className={`card_box2 ${!vizacard ? "" : ""}`}
           sx={{
             borderRadius: "10px",
             padding: "10px 20px",
@@ -91,7 +90,7 @@ const LayoutPage = () => {
           <Typography>New Credit Card</Typography>
         </Box>
         <Box
-          className={`card_box2 ${vizacard ? "hover_box" : ""}`}
+          className={`card_box2 ${vizacard ? "" : ""}`}
           sx={{
             cursor: "pointer",
             padding: "10px 20px",
@@ -134,13 +133,13 @@ const LayoutPage = () => {
                 position: "relative",
                 marginTop: "20px",
               }}
-              className="hover_box"
+              className=""
             >
               <Box
                 sx={{
                   width: "100%",
                   height: "100%",
-                  backgroundColor: "#1a73e8",
+                  backgroundColor: "green",
                   borderRadius: "10px",
                   padding: "20px",
                   color: "#fff",
@@ -159,21 +158,10 @@ const LayoutPage = () => {
                     alignItems: "center",
                   }}
                 >
-                  <img
-                    style={{
-                      width: "80px",
-                      height: "60px",
-                      marginLeft: "-20px",
-                    }}
-                    src={chip}
-                    alt=""
-                  />
-                  <Typography sx={{ fontSize: "24px" }}>VISA</Typography>
+                  <img className="hidden lg:block" style={{}} src={frem2} alt="" />
                 </Box>
                 <Box sx={{ textAlign: "center" }}>
-                  <Typography sx={{ fontSize: "23px" }}>
-                    {card.cardNumber}
-                  </Typography>
+                  <Typography sx={{ fontSize: "23px" }}>{card.cardNumber}</Typography>
                 </Box>
                 <Box
                   sx={{
@@ -183,20 +171,12 @@ const LayoutPage = () => {
                   }}
                 >
                   <Box>
-                    <Typography sx={{ fontSize: "12px" }}>
-                      Card Holder Name
-                    </Typography>
-                    <Typography sx={{ fontSize: "18px" }}>
-                      {card.cardHolder}
-                    </Typography>
+                    <Typography sx={{ fontSize: "12px" }}>Card Holder Name</Typography>
+                    <Typography sx={{ fontSize: "18px" }}>{card.cardHolder}</Typography>
                   </Box>
                   <Box>
-                    <Typography sx={{ fontSize: "12px" }}>
-                      Expiry Date
-                    </Typography>
-                    <Typography sx={{ fontSize: "18px" }}>
-                      {card.expiryDate}
-                    </Typography>
+                    <Typography sx={{ fontSize: "12px" }}>Expiry Date</Typography>
+                    <Typography sx={{ fontSize: "18px" }}>{card.expiryDate}</Typography>
                   </Box>
                 </Box>
               </Box>
@@ -204,10 +184,8 @@ const LayoutPage = () => {
           ))}
         </Box>
       ) : (
-        <Box
-          sx={{ width: { xs: "90%", md: "70%", lg: "50%" }, marginTop: "50px" }}
-        >
-          <div className="mt-5">
+        <Box sx={{ width: { xs: "90%", md: "70%", lg: "50%" }, marginTop: "50px" }}>
+          <div className="mt-3">
             <Typography
               sx={{
                 fontSize: "30px",
@@ -218,36 +196,19 @@ const LayoutPage = () => {
             >
               Add New Card
             </Typography>
-            <Typography className="text-slate-500">
-              Do more with unlimited blocks, files, automations & integrations.
-            </Typography>
+            <Typography className="text-slate-500">Do more with unlimited blocks, files, automations & integrations.</Typography>
           </div>
           <Box style={{ marginTop: "60px" }}>
             <label className="text-slate-500" htmlFor="cardHolder">
               Who is
             </label>
-            <TextField
-              id="cardHolder"
-              name="cardHolder"
-              value={newCard.cardHolder}
-              onChange={inputvaluesi}
-              className="newCard_input"
-              fullWidth
-              variant="outlined"
-            />
+            <TextField id="cardHolder" name="cardHolder" value={newCard.cardHolder} onChange={inputvaluesi} className="newCard_input" fullWidth variant="outlined" />
             <div className="mt-5">
               <label className="text-slate-500" htmlFor="cardNumber">
                 Payment Details
+                <img className="hidden lg:block" style={{}} src={frem3} alt="" />
               </label>
-              <TextField
-                id="cardNumber"
-                name="cardNumber"
-                value={newCard.cardNumber}
-                onChange={inputvaluesi}
-                className="newCard_input"
-                fullWidth
-                variant="outlined"
-              />
+              <TextField id="cardNumber" name="cardNumber" value={newCard.cardNumber} onChange={inputvaluesi} className="newCard_input" fullWidth variant="outlined" />
               <TextField
                 sx={{
                   marginTop: "10px",
@@ -271,13 +232,6 @@ const LayoutPage = () => {
               Add
             </Button>
           </Box>
-          <Typography
-            sx={{ fontSize: "13px", marginTop: "20px" }}
-            className="text-slate-500"
-          >
-            By providing your card information, you allow us to charge your card
-            for future payment in accordance with their terms.
-          </Typography>
         </Box>
       )}
     </Box>

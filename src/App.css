@@ -7,12 +7,7 @@
   box-sizing: border-box;
 }
 
-.hover_box:hover {
-  background: #834cff1a;
-  border: 1px solid #834cff;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-}
+
 
 .card_box2 {
   background: #ffffff;
